@@ -93,16 +93,17 @@
   };
 </script>
 
-  <meta name="description" content="to track my way">
-<meta property="og:type" content="website">
-<meta property="og:title" content="Library Police">
-<meta property="og:url" content="LibraryPolice.github.io/index.html">
+  <meta name="description" content="第三章 索引结构(1) 索引结构基础先回忆一下我对索引的理解和疑问：  曾经在信息检索中实现过倒排索引，可以理解索引为什么可以加速查询（空间换时间）。  对于不同的数据类型怎么建索引？第一反应是无论什么数据类型，都可以排序(不考虑加密)，因此建立索引可以让查询变成由n变为logn。  我需要一些&amp;lt;定量&amp;gt;的理论支持  需要理清物理结构 索引结构基础 一个数据可以有多个索引 显然  索引既">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Database System Implementation 笔记(2)">
+<meta property="og:url" content="LibraryPolice.github.io/2019/07/16/Database-System-Implementation-笔记-2/index.html">
 <meta property="og:site_name" content="Library Police">
-<meta property="og:description" content="to track my way">
+<meta property="og:description" content="第三章 索引结构(1) 索引结构基础先回忆一下我对索引的理解和疑问：  曾经在信息检索中实现过倒排索引，可以理解索引为什么可以加速查询（空间换时间）。  对于不同的数据类型怎么建索引？第一反应是无论什么数据类型，都可以排序(不考虑加密)，因此建立索引可以让查询变成由n变为logn。  我需要一些&amp;lt;定量&amp;gt;的理论支持  需要理清物理结构 索引结构基础 一个数据可以有多个索引 显然  索引既">
 <meta property="og:locale" content="zh-CN">
+<meta property="og:updated_time" content="2019-07-16T16:53:39.337Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Library Police">
-<meta name="twitter:description" content="to track my way">
+<meta name="twitter:title" content="Database System Implementation 笔记(2)">
+<meta name="twitter:description" content="第三章 索引结构(1) 索引结构基础先回忆一下我对索引的理解和疑问：  曾经在信息检索中实现过倒排索引，可以理解索引为什么可以加速查询（空间换时间）。  对于不同的数据类型怎么建索引？第一反应是无论什么数据类型，都可以排序(不考虑加密)，因此建立索引可以让查询变成由n变为logn。  我需要一些&amp;lt;定量&amp;gt;的理论支持  需要理清物理结构 索引结构基础 一个数据可以有多个索引 显然  索引既">
 
 
 
@@ -110,7 +111,7 @@
 
   
   
-  <link rel="canonical" href="LibraryPolice.github.io/">
+  <link rel="canonical" href="LibraryPolice.github.io/2019/07/16/Database-System-Implementation-笔记-2/">
 
 
 
@@ -121,7 +122,7 @@
 </script>
 
   
-  <title>Library Police</title>
+  <title>Database System Implementation 笔记(2) | Library Police</title>
   
 
 
@@ -169,8 +170,7 @@
     
   
 
-  <div class="container sidebar-position-left 
-  page-home">
+  <div class="container sidebar-position-left page-post-detail">
     <div class="headband"></div>
 
     <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
@@ -212,7 +212,7 @@
         
         
           
-          <li class="menu-item menu-item-home menu-item-active">
+          <li class="menu-item menu-item-home">
 
     
     
@@ -268,9 +268,9 @@
           
           <div id="content" class="content">
             
-  <section id="posts" class="posts-expand">
+
+  <div id="posts" class="posts-expand">
     
-      
 
   
 
@@ -302,10 +302,8 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">
-                
-                
-                <a href="/2019/07/16/Database-System-Implementation-笔记-2/" class="post-title-link" itemprop="url">Database System Implementation 笔记(2)</a>
+          <h1 class="post-title" itemprop="name headline">Database System Implementation 笔记(2)
+
               
             
           </h1>
@@ -384,9 +382,7 @@
       
 
       
-        
-          
-            <h1 id="第三章-索引结构-1-索引结构基础"><a href="#第三章-索引结构-1-索引结构基础" class="headerlink" title="第三章 索引结构(1) 索引结构基础"></a>第三章 索引结构(1) 索引结构基础</h1><p>先回忆一下我对索引的理解和疑问：</p>
+        <h1 id="第三章-索引结构-1-索引结构基础"><a href="#第三章-索引结构-1-索引结构基础" class="headerlink" title="第三章 索引结构(1) 索引结构基础"></a>第三章 索引结构(1) 索引结构基础</h1><p>先回忆一下我对索引的理解和疑问：</p>
 <ul>
 <li><p>曾经在信息检索中实现过倒排索引，可以理解索引为什么可以加速查询（空间换时间）。</p>
 </li>
@@ -420,13 +416,13 @@
 <h3 id="辅助索引中的间接"><a href="#辅助索引中的间接" class="headerlink" title="辅助索引中的间接"></a>辅助索引中的间接</h3><p>起因是索引文件中索引键值可能重复出现，设计一个索引文件-桶-数据文件的结构来消除这种重复。</p>
 <p>再追溯一下，由于辅助索引一般建立在非主键上，因此存在很多数据块有相同的键值的情况。</p>
 
-          
-        
       
     </div>
 
     
 
+    
+      
     
 
     
@@ -446,218 +442,28 @@
       
 
       
-
-      
-
       
       
-        <div class="post-eof"></div>
+
       
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="LibraryPolice.github.io/2019/07/16/Database-System-Implementation-笔记-1/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="Shane Wu">
-      <meta itemprop="description" content="to track my way">
-      <meta itemprop="image" content="/images/avatar.gif">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Library Police">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                
-                <a href="/2019/07/16/Database-System-Implementation-笔记-1/" class="post-title-link" itemprop="url">Database System Implementation 笔记(1)</a>
-              
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
             
-          </h1>
-        
-
-        <div class="post-meta">
-
-          
-          
-          
-
-          
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-
-              
-                
-              
-
-              <time title="创建时间：2019-07-16 22:43:41 / 修改时间：23:19:23" itemprop="dateCreated datePublished" datetime="2019-07-16T22:43:41+08:00">2019-07-16</time>
-            </span>
-          
-
-          
+              <a href="/2019/07/16/Database-System-Implementation-笔记-1/" rel="next" title="Database System Implementation 笔记(1)">
+                <i class="fa fa-chevron-left"></i> Database System Implementation 笔记(1)
+              </a>
             
+          </div>
 
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
             
-          
-
-          
-
-          
-            
-            
-          
-
-          
-          
-
-          
-
-          
-
-          <br>
-          
-
-          
-
-          
-
+          </div>
         </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
       
 
       
-        
-          
-            <h1 id="DBMS-系统概述"><a href="#DBMS-系统概述" class="headerlink" title="DBMS 系统概述"></a>DBMS 系统概述</h1><p>强调DBMS(Database Management System) 的工程性</p>
-<h2 id="数据库系统的发展"><a href="#数据库系统的发展" class="headerlink" title="数据库系统的发展"></a>数据库系统的发展</h2><ul>
-<li>定义数据</li>
-<li>查询/操纵数据</li>
-<li>大数据下的高效查询与修改</li>
-<li>持久性</li>
-<li>独立性/原子性</li>
-</ul>
-<h2 id="DBMS-概述"><a href="#DBMS-概述" class="headerlink" title="DBMS 概述"></a>DBMS 概述</h2><p>按照来源可以分为来自于User和DBA(database administrator)的命令</p>
-<ul>
-<li>&lt;数据定义语言命令&gt; 可以理解为DBA发出的指令，使用数据定义语言DDL(Data Define Language)</li>
-<li>&lt;查询处理&gt; <ul>
-<li>查询编译器对查询进行分析和优化，得到查询计划，再交给执行引擎</li>
-<li>中间存在缓冲区，缓冲区与存储管理器通信</li>
-</ul>
-</li>
-<li>&lt;事务处理&gt;<ul>
-<li>事务的定义：组成一组的若干个查询和其它动作。(一个也可以)</li>
-<li>事务要保持孤立性和持久性和原子性</li>
-<li>事务处理器分为并发控制管理器(负责原子性和孤立性)和 日志和恢复管理器(负责持久性)</li>
-</ul>
-</li>
-</ul>
-<h3 id="主存和缓冲区管理器"><a href="#主存和缓冲区管理器" class="headerlink" title="主存和缓冲区管理器"></a>主存和缓冲区管理器</h3><p>数据在辅助存储器上(磁盘)，缓冲区在主存中，缓冲区是与页面同等大小的区域，磁盘块可直接复制到缓冲区。</p>
-<p>执行引擎与缓冲区管理器交互，缓冲区管理器和存储管理器交互。他们之间传递的数据可以分为几个大类</p>
-<ul>
-<li>数据</li>
-<li>元数据</li>
-<li>日志记录</li>
-<li>统计信息</li>
-<li>索引</li>
-</ul>
-<h3 id="事务处理"><a href="#事务处理" class="headerlink" title="事务处理"></a>事务处理</h3><ul>
-<li>日志记录</li>
-<li>并发控制</li>
-<li>死锁解决</li>
-</ul>
-<h3 id="查询处理器"><a href="#查询处理器" class="headerlink" title="查询处理器"></a>查询处理器</h3><ul>
-<li>查询编译器<ul>
-<li>查询分析器</li>
-<li>查询预处理器</li>
-<li>查询优化器</li>
-</ul>
-</li>
-<li>执行引擎 需要和其它很多成分进行交互，比如缓冲区管理器/调度器/日志管理器等。</li>
-</ul>
-<h2 id="Database-System-Implementation-的主要内容"><a href="#Database-System-Implementation-的主要内容" class="headerlink" title="Database System Implementation 的主要内容"></a>Database System Implementation 的主要内容</h2><ol>
-<li>数据库系统实现</li>
-</ol>
-<ul>
-<li>存储管理</li>
-<li>查询处理</li>
-<li>事务处理</li>
-</ul>
-<ol start="2">
-<li>现代数据库系统</li>
-</ol>
-
-          
-        
-      
-    </div>
-
-    
-
-    
-
-    
-    
-    
-
-    
-
-    
-      
-    
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
       
     </footer>
   </div>
@@ -667,172 +473,19 @@
   </article>
 
 
-    
-      
-
-  
-
-  
-  
-  
-
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="LibraryPolice.github.io/2019/07/16/hello-world/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="Shane Wu">
-      <meta itemprop="description" content="to track my way">
-      <meta itemprop="image" content="/images/avatar.gif">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Library Police">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                
-                <a href="/2019/07/16/hello-world/" class="post-title-link" itemprop="url">Hello World</a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-
-          
-          
-          
-
-          
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-
-              
-                
-              
-
-              <time title="创建时间：2019-07-16 00:37:35" itemprop="dateCreated datePublished" datetime="2019-07-16T00:37:35+08:00">2019-07-16</time>
-            </span>
-          
-
-          
-
-          
-
-          
-            
-            
-          
-
-          
-          
-
-          
-
-          
-
-          <br>
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <p>Welcome to <a href="https://hexo.io/" target="_blank" rel="noopener">Hexo</a>! This is your very first post. Check <a href="https://hexo.io/docs/" target="_blank" rel="noopener">documentation</a> for more info. If you get any problems when using Hexo, you can find the answer in <a href="https://hexo.io/docs/troubleshooting.html" target="_blank" rel="noopener">troubleshooting</a> or you can ask me on <a href="https://github.com/hexojs/hexo/issues" target="_blank" rel="noopener">GitHub</a>.</p>
-<h2 id="Quick-Start"><a href="#Quick-Start" class="headerlink" title="Quick Start"></a>Quick Start</h2><h3 id="Create-a-new-post"><a href="#Create-a-new-post" class="headerlink" title="Create a new post"></a>Create a new post</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo new <span class="string">"My New Post"</span></span><br></pre></td></tr></table></figure>
-
-<p>More info: <a href="https://hexo.io/docs/writing.html" target="_blank" rel="noopener">Writing</a></p>
-<h3 id="Run-server"><a href="#Run-server" class="headerlink" title="Run server"></a>Run server</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo server</span><br></pre></td></tr></table></figure>
-
-<p>More info: <a href="https://hexo.io/docs/server.html" target="_blank" rel="noopener">Server</a></p>
-<h3 id="Generate-static-files"><a href="#Generate-static-files" class="headerlink" title="Generate static files"></a>Generate static files</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo generate</span><br></pre></td></tr></table></figure>
-
-<p>More info: <a href="https://hexo.io/docs/generating.html" target="_blank" rel="noopener">Generating</a></p>
-<h3 id="Deploy-to-remote-sites"><a href="#Deploy-to-remote-sites" class="headerlink" title="Deploy to remote sites"></a>Deploy to remote sites</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo deploy</span><br></pre></td></tr></table></figure>
-
-<p>More info: <a href="https://hexo.io/docs/deployment.html" target="_blank" rel="noopener">Deployment</a></p>
-
-          
-        
-      
-    </div>
-
-    
-
-    
-
-    
-    
-    
-
-    
-
-    
-      
-    
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
   </div>
-  
-  
-  
-  </article>
-
-
-    
-  </section>
-
-  
 
 
           </div>
           
+
+  
+    <div class="comments" id="gitalk-container">
+    </div>
+
+  
+
+
 
         </div>
         
@@ -852,8 +505,17 @@
       
 
       
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
 
-      <div class="site-overview-wrap sidebar-panel sidebar-panel-active">
+      <div class="site-overview-wrap sidebar-panel">
         <div class="site-overview">
 
           <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -923,6 +585,23 @@
         </div>
       </div>
 
+      
+      <!--noindex-->
+        <div class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+            
+            
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#第三章-索引结构-1-索引结构基础"><span class="nav-number">1.</span> <span class="nav-text">第三章 索引结构(1) 索引结构基础</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#索引结构基础"><span class="nav-number">1.1.</span> <span class="nav-text">索引结构基础</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#顺序文件-稠密索引-稀疏索引"><span class="nav-number">1.1.1.</span> <span class="nav-text">顺序文件/稠密索引/稀疏索引</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#多级索引"><span class="nav-number">1.1.2.</span> <span class="nav-text">多级索引</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#辅助索引"><span class="nav-number">1.1.3.</span> <span class="nav-text">辅助索引</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#辅助索引的运用"><span class="nav-number">1.1.4.</span> <span class="nav-text">辅助索引的运用</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#辅助索引中的间接"><span class="nav-number">1.1.5.</span> <span class="nav-text">辅助索引中的间接</span></a></li></ol></li></ol></li></ol></div>
+            
+
+          </div>
+        </div>
+      <!--/noindex-->
       
 
       
@@ -1047,6 +726,10 @@
 
 
   
+  <script src="/js/scrollspy.js?v=7.2.0"></script>
+<script src="/js/post-details.js?v=7.2.0"></script>
+
+
 
   <script src="/js/next-boot.js?v=7.2.0"></script>
 
@@ -1060,6 +743,37 @@
 
   
 
+
+  
+    
+
+<script src="//cdn.jsdelivr.net/npm/gitalk@1/dist/gitalk.min.js"></script>
+
+
+
+<link rel="stylesheet" href="//cdn.jsdelivr.net/npm/gitalk@1/dist/gitalk.min.css">
+
+
+
+<script src="//cdn.jsdelivr.net/npm/js-md5@0.7.3/src/md5.min.js"></script>
+
+<script>
+  var gitalk = new Gitalk({
+    clientID: '3fab4f2fb3bbcff2fe46',
+    clientSecret: '711351dca5b351bdc5775a1acf077ed3c1319443',
+    repo: 'LibraryPolice.github.io',
+    owner: 'LibraryPolice',
+    admin: ['LibraryPolice'],
+    id: md5(location.pathname),
+    
+      language: 'zh-CN',
+    
+    distractionFreeMode: 'true'
+  });
+  gitalk.render('gitalk-container');
+</script>
+
+  
 
 
   
